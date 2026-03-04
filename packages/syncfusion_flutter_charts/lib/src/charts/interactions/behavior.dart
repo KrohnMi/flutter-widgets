@@ -34,6 +34,7 @@ class BehaviorArea extends MultiChildRenderObjectWidget {
     this.onZoomEnd,
     this.onZoomReset,
     this.onTrackballPositionChanging,
+    this.onTrackballLinePositionChanging,
     this.onCrosshairPositionChanging,
     this.onTooltipRender,
     required this.chartThemeData,
@@ -58,6 +59,7 @@ class BehaviorArea extends MultiChildRenderObjectWidget {
   final ChartZoomingCallback? onZoomEnd;
   final ChartZoomingCallback? onZoomReset;
   final ChartTrackballCallback? onTrackballPositionChanging;
+  final ChartTrackballLineCallback? onTrackballLinePositionChanging;
   final ChartCrosshairCallback? onCrosshairPositionChanging;
   final ChartTooltipCallback? onTooltipRender;
   final Function(List<TrackballDetails> details)? trackballBuilder;
@@ -79,6 +81,7 @@ class BehaviorArea extends MultiChildRenderObjectWidget {
       ..onZoomEnd = onZoomEnd
       ..onZoomReset = onZoomReset
       ..onTrackballPositionChanging = onTrackballPositionChanging
+      ..onTrackballLinePositionChanging = onTrackballLinePositionChanging
       ..onCrosshairPositionChanging = onCrosshairPositionChanging
       ..trackballBuilder = trackballBuilder
       ..onTooltipRender = onTooltipRender
@@ -107,6 +110,7 @@ class BehaviorArea extends MultiChildRenderObjectWidget {
       ..onZoomEnd = onZoomEnd
       ..onZoomReset = onZoomReset
       ..onTrackballPositionChanging = onTrackballPositionChanging
+      ..onTrackballLinePositionChanging = onTrackballLinePositionChanging
       ..onCrosshairPositionChanging = onCrosshairPositionChanging
       ..trackballBuilder = trackballBuilder
       ..onTooltipRender = onTooltipRender
@@ -144,6 +148,7 @@ class RenderBehaviorArea extends RenderBox
 
   Function(List<TrackballDetails>)? trackballBuilder;
   ChartTrackballCallback? onTrackballPositionChanging;
+  ChartTrackballLineCallback? onTrackballLinePositionChanging;
   ChartCrosshairCallback? onCrosshairPositionChanging;
   ChartTooltipCallback? onTooltipRender;
 

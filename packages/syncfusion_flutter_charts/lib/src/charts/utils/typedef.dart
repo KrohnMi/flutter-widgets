@@ -38,8 +38,11 @@ typedef ChartLegendRenderCallback =
 typedef ChartTrendlineRenderCallback =
     void Function(TrendlineRenderParams trendlineRenderParams);
 
-///Returns the TrackballArgs.
+/// Returns the TrackballArgs.
 typedef ChartTrackballCallback = void Function(TrackballArgs trackballArgs);
+
+typedef ChartTrackballLineCallback =
+    void Function(TrackballLineArgs trackballLineRenderArgs);
 
 /// Returns the CrosshairRenderArgs
 typedef ChartCrosshairCallback =

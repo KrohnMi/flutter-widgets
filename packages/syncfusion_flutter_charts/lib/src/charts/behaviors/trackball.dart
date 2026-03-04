@@ -119,7 +119,7 @@ class TrackballBehavior extends ChartBehavior {
   ///   );
   /// }
   /// ```
-  final Color? lineColor;
+  Color? lineColor;
 
   /// Dashes of the track line.
   ///
@@ -371,6 +371,7 @@ class TrackballBehavior extends ChartBehavior {
   ThemeData? _themeData;
   Rect _plotAreaBounds = Rect.zero;
   Image? _trackballImage;
+  Color? _trackballLineColor;
   bool _isTransposed = false;
   bool _isLeft = false;
   bool _isRight = false;
@@ -864,6 +865,7 @@ class TrackballBehavior extends ChartBehavior {
     _validateLeastPointInfoWithLeastX(leastX);
     _sortTrackballPoints(_isTransposed);
     _triggerTrackballRenderCallback(parent);
+    _triggerTrackballLineRenderCallback(parent);
     _applyTooltipDisplayMode(
       _chartThemeData!,
       _themeData!,
@@ -915,6 +917,17 @@ class TrackballBehavior extends ChartBehavior {
           _visiblePoints.removeAt(i);
         }
       }
+    }
+  }
+
+  void _triggerTrackballLineRenderCallback(RenderBehaviorArea parent) {
+    if (parent.onTrackballLinePositionChanging != null) {
+      final TrackballLineArgs trackballLineArgs = TrackballLineArgs();
+      trackballLineArgs.lineColor = lineColor;
+      trackballLineArgs.chartPoint = chartPointInfo.isNotEmpty ? chartPointInfo.first.chartPoint : null;
+      parent.onTrackballLinePositionChanging!(trackballLineArgs);
+
+      lineColor = trackballLineArgs.lineColor;
     }
   }
 

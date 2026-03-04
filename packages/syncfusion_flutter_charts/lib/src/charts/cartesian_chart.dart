@@ -122,6 +122,7 @@ class SfCartesianChart extends StatefulWidget {
     this.onDataLabelRender,
     this.onLegendItemRender,
     this.onTrackballPositionChanging,
+    this.onTrackballLinePositionChanging,
     this.onCrosshairPositionChanging,
     this.onZooming,
     this.onZoomStart,
@@ -460,6 +461,39 @@ class SfCartesianChart extends StatefulWidget {
   /// }
   /// ```
   final ChartTrackballCallback? onTrackballPositionChanging;
+
+
+  /// Occurs while the trackball line position is changed. Here, you can customize
+  /// the color of the trackball line.
+  ///
+  /// ```dart
+  /// late TrackballBehavior _trackballBehavior;
+  ///
+  /// @override
+  /// void initState() {
+  ///   _trackballBehavior = TrackballBehavior( enable: true);
+  ///   super.initState();
+  ///  }
+  ///
+  /// Widget build(BuildContext context) {
+  ///     return Container(
+  ///         child: SfCartesianChart(
+  ///             trackballBehavior: _trackballBehavior,
+  /// onTrackballLinePositionChanging: (TrackballLineArgs args) => trackballLine(args)
+  ///         )
+  ///     );
+  /// }
+  /// void trackballLine(TrackballLineArgs args) {
+  ///     if (args.chartPoint?.x == 1) {
+  ///       args.lineColor = Colors.red;
+  ///     } else {
+  ///       args.lineColor = Colors.green;
+  ///     }
+  /// }
+  /// ```
+  final ChartTrackballLineCallback? onTrackballLinePositionChanging;
+
+
 
   /// Occurs when tapping the axis label. Here, you can get the appropriate axis
   /// that is tapped and the axis label text.

@@ -339,6 +339,18 @@ class TrackballArgs {
   ChartPointInfo chartPointInfo = ChartPointInfo();
 }
 
+///
+///
+/// This event is triggered when the trackball line is rendered and provides options
+/// to customize the line color.
+class TrackballLineArgs {
+  /// Get and set the color of the trackball line.
+  Color? lineColor;
+
+  /// Get the current point
+  ChartPoint? chartPoint;
+}
+
 /// Holds the onCrosshairPositionChanging event arguments.
 ///
 /// CrosshairRenderArgs is the type of Argument to the
